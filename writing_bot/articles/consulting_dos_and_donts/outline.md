@@ -1,0 +1,39 @@
+- Introduction
+    - The idea that AI will replace jobs, specifically in tech, is everywhere.
+        - Link to recent layoffs at major tech firms (AWS, Meta, Microsoft).
+    - The perception is that AI is cheaper for the same result.
+    - This is not entirely true; instead, AI will **fundamentally change the nature of certain jobs**, including data consulting.
+    - This article will examine:
+        - 3 skills to look for in the your next partner & 1 to avoid
+- Skills
+    - Positive
+        - Ahead of the curve
+            - Partners that are constantly learning and innovating
+            - Tell-tale signs
+                - Up-to-date on latest technologies & practices
+                - Can provide examples of thought leadership & engagement in the community (in the form of articles, participation in events, etc.)
+        - Generate value
+            - Shift from providing technical expertise to generating value
+            - Tell-tale signs
+                - Proven track-record of generating value for clients
+                - Results-driven
+                - Flexible in their approach
+        - Rapport
+            - Genuine connection with the partner - need to feel like they’re on your team & understand you
+            - Tell-tale signs
+                - Deep understanding of your company’s specific needs
+                - Is curious not only about your immediate goals, but also of implementing a larger vision
+                - Constantly communicates & makes you feel like a priority
+        - Bonus - Expertise in Data Governance
+            - With the rising popularity of LLMs, there is an increased requirement for strong fundamentals
+            - Good data governance (Business Process Mapping, data quality checks, Data Catalog, etc.) allows for your agent to:
+                - Understand your business
+                - Leverage this understanding to generate value
+                    - Insights (chatbot)
+                    - Automations (automated report generation)
+    - To avoid
+        - Tool-based expertise
+            - Expertise in technical implementation of specific tool will become less-and-less important as it becomes easier-and-easier to become “good-enough” using LLM-based services (example - ChatGPT)
+            - Tell-tale signs
+                - Can only implement a specific product, not an end-to-end solution
+                - Static, out-of-the box implementation of service (does not take client’s specific situation into account)
