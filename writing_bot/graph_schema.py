@@ -2,27 +2,27 @@ from gqlalchemy import Memgraph, Node, Field
 from typing import Optional
 
 class Article(Node):
-    id: str = Field(index=True, unique=True)
-    title: str = Field()
-    path: str = Field()  # Path to the article markdown file
-    created_at: Optional[str] = Field(default=None)
+    id: str
+    title: str
+    path: str  # Path to the article markdown file
+    created_at: Optional[str]
 
 class Outline(Node):
-    id: str = Field(index=True, unique=True)
-    article_id: str = Field()  # Link to Article
-    path: str = Field()  # Path to the outline markdown file
+    id: str
+    article_id: str  # Link to Article
+    path: str  # Path to the outline markdown file
 
 class StyleElement(Node):
-    id: str = Field(index=True, unique=True)
-    name: str = Field()
-    description: Optional[str] = Field(default=None)
+    id: str
+    name: str
+    description: Optional[str]
 
 class ProcessStep(Node):
-    id: str = Field(index=True, unique=True)
-    name: str = Field()
-    description: Optional[str] = Field(default=None)
+    id: str
+    name: str
+    description: Optional[str]
 
 class Reference(Node):
-    id: str = Field(index=True, unique=True)
-    url: str = Field()
-    description: Optional[str] = Field(default=None) 
+    id: str
+    url: str
+    description: Optional[str] 
