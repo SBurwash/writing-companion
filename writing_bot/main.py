@@ -4,13 +4,20 @@ from .article_manager import ArticleManager
 from .gemini_client import GeminiClient
 
 
+def get_default_project(ctx):
+    """Get the default project from environment variable or context."""
+    return os.getenv('PROJECT_NAME') or ctx.obj.get('default_project')
+
+
 @click.group()
 @click.option('--api-key', envvar='GOOGLE_API_KEY', help='Google AI API key')
+@click.option('--project', envvar='PROJECT_NAME', help='Default project name')
 @click.pass_context
-def cli(ctx, api_key):
+def cli(ctx, api_key, project):
     """Article Writing CLI - Write articles with Gemini AI and git versioning."""
     ctx.ensure_object(dict)
     ctx.obj['api_key'] = api_key
+    ctx.obj['default_project'] = project
     
     # Initialize managers
     try:
@@ -55,12 +62,18 @@ def list(ctx):
 
 
 @cli.command()
-@click.argument('project_name')
 @click.argument('section_name')
+@click.argument('project_name', required=False)
 @click.option('--context', help='Additional context for the section')
 @click.pass_context
-def expand(ctx, project_name, section_name, context):
+def expand(ctx, section_name, project_name, context):
     """Expand an outline section with Gemini AI."""
+    # Use default project if not specified
+    if not project_name:
+        project_name = get_default_project(ctx)
+        if not project_name:
+            click.echo("❌ No project specified. Use --project option or set PROJECT_NAME environment variable.")
+            ctx.exit(1)
     if not ctx.obj['gemini_client']:
         click.echo("❌ Gemini API key not configured. Set GOOGLE_API_KEY environment variable.")
         ctx.exit(1)
@@ -109,12 +122,17 @@ def expand(ctx, project_name, section_name, context):
 
 
 @cli.command()
-@click.argument('project_name')
 @click.argument('section_name')
 @click.argument('instruction')
+@click.argument('project_name', required=False)
 @click.pass_context
-def rewrite(ctx, project_name, section_name, instruction):
-    """Rewrite existing content based on instructions."""
+def rewrite(ctx, section_name, instruction, project_name):
+    # Use default project if not specified
+    if not project_name:
+        project_name = get_default_project(ctx)
+        if not project_name:
+            click.echo("❌ No project specified. Use --project option or set PROJECT_NAME environment variable.")
+            ctx.exit(1)
     if not ctx.obj['gemini_client']:
         click.echo("❌ Gemini API key not configured. Set GOOGLE_API_KEY environment variable.")
         ctx.exit(1)
@@ -174,12 +192,17 @@ def research(ctx, topic):
 
 
 @cli.command()
-@click.argument('project_name')
 @click.argument('section_name')
+@click.argument('project_name', required=False)
 @click.option('--style-notes', help='Specific style preferences')
 @click.pass_context
-def improve(ctx, project_name, section_name, style_notes):
-    """Improve the writing style of a section."""
+def improve(ctx, section_name, project_name, style_notes):
+    # Use default project if not specified
+    if not project_name:
+        project_name = get_default_project(ctx)
+        if not project_name:
+            click.echo("❌ No project specified. Use --project option or set PROJECT_NAME environment variable.")
+            ctx.exit(1)
     if not ctx.obj['gemini_client']:
         click.echo("❌ Gemini API key not configured. Set GOOGLE_API_KEY environment variable.")
         ctx.exit(1)
@@ -212,10 +235,15 @@ def improve(ctx, project_name, section_name, style_notes):
 
 
 @cli.command()
-@click.argument('project_name')
+@click.argument('project_name', required=False)
 @click.pass_context
 def status(ctx, project_name):
-    """Show project status and git history."""
+    # Use default project if not specified
+    if not project_name:
+        project_name = get_default_project(ctx)
+        if not project_name:
+            click.echo("❌ No project specified. Use --project option or set PROJECT_NAME environment variable.")
+            ctx.exit(1)
     try:
         article_manager = ctx.obj['article_manager']
         status_info = article_manager.get_status(project_name)
@@ -238,11 +266,16 @@ def status(ctx, project_name):
 
 
 @cli.command()
-@click.argument('project_name')
 @click.argument('message')
+@click.argument('project_name', required=False)
 @click.pass_context
-def commit(ctx, project_name, message):
-    """Commit changes with a custom message."""
+def commit(ctx, message, project_name):
+    # Use default project if not specified
+    if not project_name:
+        project_name = get_default_project(ctx)
+        if not project_name:
+            click.echo("❌ No project specified. Use --project option or set PROJECT_NAME environment variable.")
+            ctx.exit(1)
     try:
         article_manager = ctx.obj['article_manager']
         article_manager.commit_changes(project_name, message)
@@ -253,10 +286,15 @@ def commit(ctx, project_name, message):
 
 
 @cli.command()
-@click.argument('project_name')
+@click.argument('project_name', required=False)
 @click.pass_context
 def outline(ctx, project_name):
-    """Show the outline for a project."""
+    # Use default project if not specified
+    if not project_name:
+        project_name = get_default_project(ctx)
+        if not project_name:
+            click.echo("❌ No project specified. Use --project option or set PROJECT_NAME environment variable.")
+            ctx.exit(1)
     try:
         article_manager = ctx.obj['article_manager']
         files = article_manager.get_project_files(project_name)
@@ -272,10 +310,15 @@ def outline(ctx, project_name):
 
 
 @cli.command()
-@click.argument('project_name')
+@click.argument('project_name', required=False)
 @click.pass_context
 def article(ctx, project_name):
-    """Show the current article content."""
+    # Use default project if not specified
+    if not project_name:
+        project_name = get_default_project(ctx)
+        if not project_name:
+            click.echo("❌ No project specified. Use --project option or set PROJECT_NAME environment variable.")
+            ctx.exit(1)
     try:
         article_manager = ctx.obj['article_manager']
         files = article_manager.get_project_files(project_name)
@@ -285,6 +328,61 @@ def article(ctx, project_name):
         click.echo("=" * 50)
         click.echo(article_content)
         
+    except Exception as e:
+        click.echo(f"❌ Error: {e}")
+        ctx.exit(1)
+
+
+@cli.command()
+@click.argument('request', nargs=-1)
+@click.option('--project_name', required=False)
+@click.pass_context
+def review(ctx, request, project_name):
+    # Use default project if not specified
+    if not project_name:
+        project_name = get_default_project(ctx)
+        if not project_name:
+            click.echo("❌ No project specified. Use --project option or set PROJECT_NAME environment variable.")
+            ctx.exit(1)
+    if not ctx.obj['gemini_client']:
+        click.echo("❌ Gemini API key not configured. Set GOOGLE_API_KEY environment variable.")
+        ctx.exit(1)
+    print(project_name)
+    print(get_default_project(ctx))
+    try:
+        print(project_name)
+        print("here")
+        article_manager = ctx.obj['article_manager']
+        print("here2")
+        gemini_client = ctx.obj['gemini_client']
+        print("here3")
+        files = article_manager.get_project_files(project_name)
+        print("here4")
+        outline_content = article_manager.read_file(files['outline'])
+        print("here5")
+        article_content = article_manager.read_file(files['article'])
+        print("here6")
+        request_text = " ".join(request)
+        print(request_text)
+        if not request_text.strip():
+            click.echo("❌ Please provide a review request. Examples:")
+            click.echo("  • review my outline")
+            click.echo("  • give feedback on structure")
+            click.echo("  • check for gaps in my content")
+            click.echo("  • suggest improvements")
+            ctx.exit(1)
+        click.echo(f"🔍 Reviewing '{project_name}' with request: '{request_text}'")
+        click.echo("🤖 Analyzing with Gemini...")
+        feedback = gemini_client.review_with_context(
+            request=request_text,
+            outline_content=outline_content,
+            article_content=article_content,
+            project_name=project_name
+        )
+        click.echo("\n📋 Review Feedback:")
+        click.echo("=" * 60)
+        click.echo(feedback)
+        click.echo("=" * 60)
     except Exception as e:
         click.echo(f"❌ Error: {e}")
         ctx.exit(1)
