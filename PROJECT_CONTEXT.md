@@ -1,16 +1,15 @@
 # Project Context: Article Writing CLI with Gemini
 
 ## Purpose
-A CLI tool to help you write articles in Cursor by leveraging Gemini CLI for content generation, editing, and research. The tool works with outlines and provides versioning through git.
+A CLI tool to help you write articles in Cursor by leveraging Gemini CLI for content review and feedback. The tool works with outlines and provides versioning through git.
 
 ## Core Workflow
 1. **Write an outline** in markdown format
 2. **Use CLI commands** to interact with Gemini for:
-   - Expanding sections
-   - Rewriting content
-   - Research and fact-checking
-   - Style improvements
-   - Content suggestions
+   - Reviewing outlines and content
+   - Getting feedback on structure
+   - Receiving writing suggestions
+   - Identifying gaps and improvements
 3. **Git versioning** tracks all changes automatically
 
 ## Architecture
@@ -22,19 +21,17 @@ A CLI tool to help you write articles in Cursor by leveraging Gemini CLI for con
 
 ## Dependencies
 - Python >=3.10,<4.0
-- Gemini CLI (for content generation)
+- Gemini CLI (for content review)
 - click (for CLI interface)
 - gitpython (for version control)
 - pyyaml (for configuration)
 
-## CLI Commands (planned)
+## CLI Commands
 - `init <project_name>` - Initialize new article project
-- `expand <section>` - Expand outline section with Gemini
-- `rewrite <section>` - Rewrite existing content
-- `research <topic>` - Get research and facts from Gemini
-- `improve <section>` - Improve writing style and flow
-- `status` - Show current project status and git history
-- `commit <message>` - Commit changes with custom message
+- `list` - List all available projects
+- `status [project_name]` - Show project status and git history
+- `commit <message> [project_name]` - Commit changes with custom message
+- `review <request> [--project project_name]` - Review project with free-form requests
 
 ## File Structure
 ```
@@ -42,24 +39,30 @@ writing_bot/articles/
 ├── project_name/
 │   ├── outline.md      # Original outline
 │   ├── article.md      # Generated/edited content
+│   ├── config.yaml     # Project configuration
 │   └── .git/           # Git repository for versioning
 ```
 
-## Progress
-- [ ] Project setup and dependencies
-- [ ] Basic CLI structure
-- [ ] Gemini CLI integration
-- [ ] Article project management
-- [ ] Git versioning integration
-- [ ] Core CLI commands
+## Environment Variables
+- `GOOGLE_API_KEY` - Google AI API key (required for review functionality)
+- `PROJECT_NAME` - Default project name (optional)
 
-## Next Steps
-1. Set up new project structure
-2. Install and configure Gemini CLI
-3. Create basic CLI framework
-4. Implement article project management
-5. Add Gemini integration for content generation
-6. Integrate git versioning
+## Progress
+- [x] Project setup and dependencies
+- [x] Basic CLI structure
+- [x] Gemini CLI integration
+- [x] Article project management
+- [x] Git versioning integration
+- [x] Core CLI commands
+- [x] Free-form review system
+- [x] Environment variable support
+
+## Current Status
+The project is now simplified and focused on:
+1. **Project Management**: Create and manage article projects
+2. **AI Review**: Get feedback on outlines and content using natural language
+3. **Version Control**: Track all changes with git
+4. **Flexible Workflow**: Use environment variables for convenience
 
 ---
-_New direction: Simplified CLI-based article writing with Gemini and git versioning_ 
+_Simplified CLI-based article writing with Gemini review and git versioning_ 
