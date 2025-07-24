@@ -1,16 +1,17 @@
 [project]
 name = "writing-bot"
 version = "0.1.0"
-description = ""
+description = "A CLI tool to help you write articles with Gemini AI and git versioning"
 authors = [
     {name = "Stephane Burwash",email = "stefburwash@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.10,<4.0"
 dependencies = [
-    "gqlalchemy (==1.7.0)",
-    "memgraph (>=0.0.1,<0.0.2)",
-    "click (>=8.2.1,<9.0.0)"
+    "click (>=8.2.1,<9.0.0)",
+    "gitpython (>=3.1.0,<4.0.0)",
+    "pyyaml (>=6.0,<7.0)",
+    "google-generativeai (>=0.3.0,<1.0.0)"
 ]
 
 
