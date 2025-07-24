@@ -1,10 +1,27 @@
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, TypedDict
 from langgraph.graph import StateGraph, END
 from .session_manager import SessionManager
 from .article_manager import ArticleManager
 import click
 import google.generativeai as genai
 import os
+
+
+class WorkflowState(TypedDict):
+    """State schema for the conversation workflow."""
+    user_input: str
+    project_name: str
+    detected_action: Optional[str]
+    analysis_complete: Optional[bool]
+    research_topic: Optional[str]
+    research_data: Optional[Dict[str, Any]]
+    research_complete: Optional[bool]
+    suggestions: Optional[str]
+    apply_updates: Optional[bool]
+    outline_updated: Optional[bool]
+    updated_outline: Optional[str]
+    assistant_response: Optional[str]
+    conversation_complete: Optional[bool]
 
 
 class ConversationWorkflow:
@@ -36,7 +53,7 @@ class ConversationWorkflow:
             StateGraph workflow
         """
         # Define the state schema
-        workflow = StateGraph(StateType=Dict[str, Any])
+        workflow = StateGraph(WorkflowState)
         
         # Add nodes
         workflow.add_node("analyze_input", self._analyze_input)
