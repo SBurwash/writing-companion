@@ -17,7 +17,7 @@ class GeminiClient:
             raise ValueError("Google API key is required. Set GOOGLE_API_KEY environment variable or pass api_key parameter.")
         
         genai.configure(api_key=self.api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-pro')
+        self.model = genai.GenerativeModel('gemini-2.0-flash')
     
     def review_with_context(self, request: str, outline_content: str, article_content: str = "", project_name: str = "") -> str:
         """Handle free-form review requests with project context.

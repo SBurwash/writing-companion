@@ -1,12 +1,14 @@
 from typing import Dict, Any, List, Optional, TypedDict
-from langgraph.graph import StateGraph, END
+from langgraph.graph import StateGraph, END, START
+from langchain.globals import set_verbose
 from .session_manager import SessionManager
 from .article_manager import ArticleManager
+from IPython.display import Image, display
 import click
 import google.generativeai as genai
 import os
 
-
+set_verbose(True)
 class WorkflowState(TypedDict):
     """State schema for the conversation workflow."""
     user_input: str
@@ -41,10 +43,11 @@ class ConversationWorkflow:
         
         # Initialize LLM with direct Google API
         genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
-        self.llm = genai.GenerativeModel('gemini-1.5-pro')
+        self.llm = genai.GenerativeModel('gemini-2.0-flash')
         
         # Create the workflow graph
         self.workflow = self._create_workflow()
+        print(self.workflow.get_graph().draw_mermaid())
     
     def _create_workflow(self) -> StateGraph:
         """Create the LangGraph workflow.
@@ -63,6 +66,7 @@ class ConversationWorkflow:
         workflow.add_node("generate_response", self._generate_response)
         
         # Define edges
+        workflow.add_edge(START, "analyze_input")
         workflow.add_edge("analyze_input", "research_topic")
         workflow.add_edge("research_topic", "suggest_outline_updates")
         workflow.add_edge("suggest_outline_updates", "apply_outline_updates")
@@ -92,7 +96,7 @@ class ConversationWorkflow:
         
         return workflow.compile()
     
-    def _analyze_input(self, state: Dict[str, Any]) -> Dict[str, Any]:
+    def _analyze_input(self, state: WorkflowState) -> WorkflowState:
         """Analyze user input and determine next action.
         
         Args:
@@ -132,7 +136,7 @@ class ConversationWorkflow:
             "analysis_complete": True
         }
     
-    def _route_after_analysis(self, state: Dict[str, Any]) -> str:
+    def _route_after_analysis(self, state: WorkflowState) -> str:
         """Route to next node based on analysis.
         
         Args:
@@ -150,7 +154,7 @@ class ConversationWorkflow:
         else:
             return "direct_response"
     
-    def _research_topic(self, state: Dict[str, Any]) -> Dict[str, Any]:
+    def _research_topic(self, state: WorkflowState) -> WorkflowState:
         """Research a topic and store results.
         
         Args:
@@ -210,7 +214,7 @@ class ConversationWorkflow:
             "research_complete": True
         }
     
-    def _suggest_outline_updates(self, state: Dict[str, Any]) -> Dict[str, Any]:
+    def _suggest_outline_updates(self, state: WorkflowState) -> WorkflowState:
         """Suggest outline updates based on research.
         
         Args:
@@ -272,7 +276,7 @@ class ConversationWorkflow:
             "apply_updates": apply_updates
         }
     
-    def _route_after_suggestions(self, state: Dict[str, Any]) -> str:
+    def _route_after_suggestions(self, state: WorkflowState) -> str:
         """Route after suggesting outline updates.
         
         Args:
@@ -286,7 +290,7 @@ class ConversationWorkflow:
         else:
             return "skip_updates"
     
-    def _apply_outline_updates(self, state: Dict[str, Any]) -> Dict[str, Any]:
+    def _apply_outline_updates(self, state: WorkflowState) -> WorkflowState:
         """Apply the suggested outline updates.
         
         Args:
@@ -334,7 +338,7 @@ class ConversationWorkflow:
             "updated_outline": updated_outline
         }
     
-    def _generate_response(self, state: Dict[str, Any]) -> Dict[str, Any]:
+    def _generate_response(self, state: WorkflowState) -> WorkflowState:
         """Generate final response to user.
         
         Args:
@@ -370,7 +374,7 @@ class ConversationWorkflow:
             "conversation_complete": True
         }
     
-    def run(self, user_input: str) -> Dict[str, Any]:
+    def run(self, user_input: str) -> WorkflowState:
         """Run the conversation workflow.
         
         Args:
@@ -380,9 +384,20 @@ class ConversationWorkflow:
             Workflow result
         """
         # Initialize state
-        initial_state = {
+        initial_state: WorkflowState = {
             "user_input": user_input,
-            "project_name": self.project_name
+            "project_name": self.project_name,
+            "detected_action": None,
+            "analysis_complete": None,
+            "research_topic": None,
+            "research_data": None,
+            "research_complete": None,
+            "suggestions": None,
+            "apply_updates": None,
+            "outline_updated": None,
+            "updated_outline": None,
+            "assistant_response": None,
+            "conversation_complete": None
         }
         
         # Run the workflow
