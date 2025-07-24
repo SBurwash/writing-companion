@@ -28,17 +28,22 @@ A CLI tool to help you write articles in Cursor by leveraging Gemini CLI for con
 
 4. Start writing with AI assistance:
    ```bash
-   poetry run python cli.py expand introduction
+   poetry run python cli.py expand my-article introduction
    poetry run python cli.py research "latest trends"
-   poetry run python cli.py improve conclusion
+   poetry run python cli.py improve my-article conclusion
+   poetry run python cli.py review my-article "please review my outline and suggest improvements"
    ```
 
 ## Commands
 
 - `init <project_name>` - Initialize new article project
-- `expand <section>` - Expand outline section with Gemini
-- `rewrite <section>` - Rewrite existing content
+- `list` - List all available projects
+- `expand <project> <section>` - Expand outline section with Gemini
+- `rewrite <project> <section> <instruction>` - Rewrite existing content
 - `research <topic>` - Get research and facts from Gemini
-- `improve <section>` - Improve writing style and flow
-- `status` - Show current project status and git history
-- `commit <message>` - Commit changes with custom message 
+- `improve <project> <section>` - Improve writing style and flow
+- `review <project> <request>` - Review project with free-form requests
+- `status <project>` - Show current project status and git history
+- `commit <project> <message>` - Commit changes with custom message
+- `outline <project>` - View project outline
+- `article <project>` - View project article content 
