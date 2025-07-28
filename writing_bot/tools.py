@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 from langchain_core.tools import tool
+from langchain_community.agent_toolkits import FileManagementToolkit
 
 # Setup module logger
 logger = logging.getLogger(__name__)
