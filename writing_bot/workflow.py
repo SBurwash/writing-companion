@@ -49,6 +49,9 @@ def run_workflow():
     logger.info("Entering interactive chat loop")
     while True:
         user_input = input("User: ")
+        if user_input.lower() in ["quit", "exit", "q"]:
+            print("Goodbye!")
+            break
         logger.info(f"Received user input: {user_input[:200]}...")
         inputs = {"messages": [("user", user_input)]}
         print_stream(graph.stream(inputs, config, stream_mode="values"))
