@@ -2,13 +2,11 @@ import logging
 from io import BytesIO
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_community.agent_toolkits import FileManagementToolkit
 from langgraph.checkpoint.memory import MemorySaver
 from langgraph.prebuilt import create_react_agent
 from PIL import Image
-from pathlib import Path
 
-from .tools import check_weather
+from .tools import check_weather, get_file_management_tools
 # Setup module logger
 logger = logging.getLogger(__name__)
 
@@ -27,8 +25,7 @@ def print_stream(stream):
 
 def run_workflow():
     logger.info("Initializing workflow")
-    file_toolkit = FileManagementToolkit(root_dir=str(Path.cwd())).get_tools()
-    logger.info(f"{Path.cwd()}")
+    file_toolkit = get_file_management_tools()
     tools = [check_weather, *file_toolkit]
     logger.info(f"Initialized model and loaded {len(tools)} tools")
 
