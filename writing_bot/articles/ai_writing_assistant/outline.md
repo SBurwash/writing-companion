@@ -65,7 +65,7 @@
         *  For now - CLI
   *  Step-by-step guide
      *  HEAVILY inspired by [this article](https://langchain-ai.github.io/langgraph/agents/agents/)
-     *  INSERT DESCRIPTION OF CODE HERE
+     *  (See REACT_AGENT_GUIDE.md)
 
 *   **Challenges and Lessons Learned:**
     * INSERT MORE CHALLENGES HERE
