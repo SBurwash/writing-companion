@@ -29,32 +29,36 @@
     *   Chain-of-Thought (CoT) Prompting
         *   Explanation of Chain-of-Thought prompting and its benefits
 
-*   **Conclusion**
-    *   Recap of the key steps
-    *   Potential future directions and improvements
-*   **LangChain Exploration:**
-    *   Your initial experiences with LangChain. What did you build? What tutorials did you follow?
-    *   Specific examples of what you were able to achieve with LangChain.
-    *   The limitations you encountered that led you to explore LangGraph. What were the pain points?
-    *   Code snippets of your LangChain implementation (optional, but helpful).
-
-*   **LangGraph Deep Dive:**
-    *   Why LangGraph? What specific benefits did you hope to gain?
-    *   Explain the core concepts of LangGraph (graph-based agents, cycles, etc.).
-    *   Your experience implementing a writing assistant with LangGraph.
-    *   Challenges and trade-offs of using LangGraph.
-    *   Did LangGraph solve the limitations you faced with LangChain? If not, why?
-
-*   **The Shift to React AI Agent:**
-    *   What motivated the move to a React-based AI agent? Was it the UI? Real-time interaction?
-    *   Explain the architecture of your React AI agent.
-    *   How did you integrate the AI model (e.g., OpenAI) into your React application?
-    *   Discuss the benefits of using React for building the user interface.
-
-*   **Tools and Technologies:**
-    *   A more detailed breakdown of the specific libraries, frameworks, and tools you used at each stage (LangChain, LangGraph, React, OpenAI API, etc.).
-    *   Version numbers and setup instructions (where relevant).
-    *   Why you chose those specific tools.
+* **Creating the agent**
+  * Objective - Create an agent that will enable me to write articles
+    * My current process
+      * Write an outline
+        * Initial first draft in nested bullet-points
+        * Copy-paste into gemini for feedback & suggestions
+        * Copy-back into notion
+        * Re-write 80% of it, keeping the nuggets
+        * Repeat
+      * Once that's done, write the article
+        * Take outline, paste in gemini, generate the article
+        * Copy back in Notion, gut and re-write
+        * Re-pass in Gemini
+        * And round we go
+    * The value of this process
+      * Get suggestions for expressions, turns of phrase, structure
+      * Perform additional research
+      * Speed up generation of skeleton
+      * Easily process different types of artifacts (example - code)
+    * How we're going to re-produce this
+      * Write articles in IDE - Each article is in its own sub-folder, with 2 files:
+        *  Outline.md
+        *  Article.md
+     *  Create an agent that can
+        *  Interact with the files to make edits
+        *  Interact with the internet to get additional information
+     *  How to interact with them?
+        *  For now - CLI
+  *  Step-by-step guide
+     *  
 
 *   **Challenges and Lessons Learned:**
     *   A dedicated section on the challenges you faced throughout the entire process.
@@ -66,7 +70,20 @@
     *   Areas for improvement and optimization.
     *   How you plan to address the challenges you identified.
 
-* References
+
+
+*   **Conclusion**
+    *   Recap of the key steps
+    *   Potential future directions and improvements
+
+* **A note on working with Cursor**
+  * Leveraged cursor to build application
+  * Was fun, but came with unexpected issues regarding generating complex, un-flexible solutions that were hard to amend
+  * [In pragmatic engineer](https://newsletter.pragmaticengineer.com/p/cursor-makes-developers-less-effective), can see that cursor can actually lower productivity when not well trained on its usage
+  * Keep your eyes out for a longer article on this subject
+
+
+* **References**
   *   ReAct: Synergizing Reasoning and Acting in Language Models
         *   Summary:
             *   The ReAct paper introduces a novel approach to language modeling that combines reasoning and acting. It proposes that language models can be more effective in complex tasks if they can not only generate text but also interact with an environment (e.g., a knowledge base or a search engine) to gather information and refine their reasoning process. The core idea is to interleave reasoning steps (thoughts) with actions that allow the model to gather more information, enabling it to handle tasks requiring more than just memorized knowledge.
@@ -78,3 +95,6 @@
         *   Link: https://arxiv.org/abs/2210.03629
   *   Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
         *   Wei et al. 2022
+  *  https://www.ibm.com/think/topics/chain-of-thoughts
+  *  https://www.ibm.com/think/topics/react-agent#1287801558
+  *  https://spr.com/comparing-react-and-rewoo-two-frameworks-for-building-ai-agents-in-generative-ai/
