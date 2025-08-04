@@ -14,7 +14,7 @@
         *   Agent: An entity that perceives its environment through sensors and acts upon that environment through effectors. In the context of AI, an agent typically refers to a software program that can autonomously perform tasks to achieve specific goals.
         *   ReAct Agent: An agent that combines reasoning and acting, allowing it to interact with an environment to solve complex tasks. Unlike traditional agents that primarily focus on pre-defined actions, ReAct agents interleave reasoning traces and actions, enabling more dynamic and human-like problem-solving. This allows them to handle situations not explicitly programmed in advance.
         *   Comparison to an intern, or well-trained monkey
-    *   ReAct (Reason + Act) agent
+    *   ReAct (Reason + Act) **agent**
         *   Definition
         *   Components
             *   Main node (agent)
@@ -26,16 +26,6 @@
             *   Observation: The agent observes the result of the action. This could be the output of a tool, the response from an API, or a change in the environment.
             *   Reflection: The agent reflects on the observation and updates its plan based on the new information. This step helps the agent adapt to unexpected results or refine its strategy.
             *   Repeat: The agent repeats the planning, action, observation, and reflection steps until the task is completed or a satisfactory solution is found.
-        *   Reference
-            *   [https://arxiv.org/abs/2210.03629](https://arxiv.org/abs/2210.03629)
-    *   ReAct: Synergizing Reasoning and Acting in Language Models
-        *   Summary:
-            *   The ReAct paper introduces a novel approach to language modeling that combines reasoning and acting. It proposes that language models can be more effective in complex tasks if they can not only generate text but also interact with an environment (e.g., a knowledge base or a search engine) to gather information and refine their reasoning process. The core idea is to interleave reasoning steps (thoughts) with actions that allow the model to gather more information, enabling it to handle tasks requiring more than just memorized knowledge.
-        *   Key Contributions:
-            *   The ReAct Framework: The paper presents a framework for training language models to perform reasoning and acting in a synergistic manner.
-            *   Improved Performance on Complex Tasks: The paper demonstrates that ReAct agents outperform traditional language models on a range of tasks, including question answering, fact verification, and commonsense reasoning.
-            *   Enhanced Interpretability: By explicitly modeling the reasoning process, ReAct agents provide more interpretable and transparent decision-making compared to black-box language models.
-            *   Addressing Hallucination: The ability to gather information from external sources helps ReAct agents mitigate the problem of hallucination (generating false or misleading information), which is a common issue in large language models.
 
 
 *   **Conclusion**
@@ -74,3 +64,14 @@
     *   Your plans for the future of the writing assistant. What features do you want to add?
     *   Areas for improvement and optimization.
     *   How you plan to address the challenges you identified.
+
+* References
+  *   ReAct: Synergizing Reasoning and Acting in Language Models
+        *   Summary:
+            *   The ReAct paper introduces a novel approach to language modeling that combines reasoning and acting. It proposes that language models can be more effective in complex tasks if they can not only generate text but also interact with an environment (e.g., a knowledge base or a search engine) to gather information and refine their reasoning process. The core idea is to interleave reasoning steps (thoughts) with actions that allow the model to gather more information, enabling it to handle tasks requiring more than just memorized knowledge.
+        *   Key Contributions:
+            *   The ReAct Framework: The paper presents a framework for training language models to perform reasoning and acting in a synergistic manner.
+            *   Improved Performance on Complex Tasks: The paper demonstrates that ReAct agents outperform traditional language models on a range of tasks, including question answering, fact verification, and commonsense reasoning.
+            *   Enhanced Interpretability: By explicitly modeling the reasoning process, ReAct agents provide more interpretable and transparent decision-making compared to black-box language models.
+            *   Addressing Hallucination: The ability to gather information from external sources helps ReAct agents mitigate the problem of hallucination (generating false or misleading information), which is a common issue in large language models.
+        *   Link: https://arxiv.org/abs/2210.03629
