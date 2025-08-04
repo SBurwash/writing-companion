@@ -26,7 +26,8 @@
             *   Observation: The agent observes the result of the action. This could be the output of a tool, the response from an API, or a change in the environment.
             *   Reflection: The agent reflects on the observation and updates its plan based on the new information. This step helps the agent adapt to unexpected results or refine its strategy.
             *   Repeat: The agent repeats the planning, action, observation, and reflection steps until the task is completed or a satisfactory solution is found.
-
+    *   Chain-of-Thought (CoT) Prompting
+        *   Explanation of Chain-of-Thought prompting and its benefits
 
 *   **Conclusion**
     *   Recap of the key steps
@@ -75,3 +76,5 @@
             *   Enhanced Interpretability: By explicitly modeling the reasoning process, ReAct agents provide more interpretable and transparent decision-making compared to black-box language models.
             *   Addressing Hallucination: The ability to gather information from external sources helps ReAct agents mitigate the problem of hallucination (generating false or misleading information), which is a common issue in large language models.
         *   Link: https://arxiv.org/abs/2210.03629
+  *   Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
+        *   Wei et al. 2022
