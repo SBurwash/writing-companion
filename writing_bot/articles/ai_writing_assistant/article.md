@@ -49,21 +49,38 @@ This imitates more "human-like" reasoning using chain-of-thought (CoI), which fo
 - Then, you need to check in your fridge, and validate if you have all the ingredients.
 - If you do, then you can start cooking, and serve!
 
-Let's take this example and use it to highlight different components of our architecture:
+Here are the main components of a ReAct architecture:
 
-*   **Main node (agent):** The core of the agent, responsible for reasoning and decision-making.
-*   **Tools:** External resources or functions that the agent can use to interact with the environment.
+
+*   **Main node (agent):** The core of the agent, responsible for reasoning and decision-making. In our case, this is you, deciding to make dinner.
+*   **Tools:** External resources or functions that the agent can use to interact with the environment. In our case, this would be your ability to:
+    * Lookup a recipe
+    * Go in the fridge
+    * Cook
 *   **Operational process:**
-    1.  **Input/Query:** The agent receives an initial query or task.
+    1.  **Input/Query:** The initial prompt for the action, such as "Research a recipe".
     2.  **Planning (Reasoning):** The agent analyzes the query and formulates a plan to achieve the desired outcome. This involves reasoning about the available tools and knowledge.
     3.  **Action:** Based on the plan, the agent selects and executes an action. This might involve using a tool, querying an external API, or interacting with the environment.
     4.  **Observation:** The agent observes the result of the action. This could be the output of a tool, the response from an API, or a change in the environment.
     5.  **Reflection:** The agent reflects on the observation and updates its plan based on the new information. This step helps the agent adapt to unexpected results or refine its strategy.
     6.  **Repeat:** The agent repeats the planning, action, observation, and reflection steps until the task is completed or a satisfactory solution is found.
 
-### Chain-of-Thought (CoT) Prompting
+Let's take this example and use it to highlight different components of our architecture: 
 
-Chain-of-Thought (CoT) prompting is a technique that enhances the reasoning abilities of large language models by encouraging them to break down complex problems into a series of smaller, more manageable steps. By explicitly reasoning through the problem, the agent can arrive at more accurate and reliable solutions.
+*   **Main node (agent):** You, deciding to make dinner.
+*   **Tools:** Your ability to:
+    * Lookup a recipe
+    * Go in the fridge
+    * Cook
+*   **Operational process:**
+    1.  **Input/Query:** "I need to research a recipe"
+    2.  **Planning (Reasoning):** "To do so, I should look on the internet, because there are no recipes in the fridge."
+    3.  **Action:** - Searches for General Tao Tofu on the Internet - 
+    4.  **Observation:** "We now have our recipe."
+    5.  **Reflection:** "We should look in the fridge to see if we have all the ingredients."
+    6.  **Repeat:** "I need to look into the fridge and evaluate what I have."
+
+With the concept of a ReAct agent hopefully a bit clearer, we can now look at how we can one ourselves!
 
 ## Creating the Agent
 
