@@ -1,5 +1,11 @@
 # Outline: React AI Agent
 
+-------- FOR AI AGENT AS CONTEXT -----------------
+- Article written for developpers to get a better understanding of react agents
+- Want to showcase simplicity of creating your own personal, USEFUL agent
+- Was an opportunity for me to learn about the technology
+--------------------------------------------------
+
 *   **Introduction**
     *   AI is the name on the town right now
     *   Lots of talk about the "what", but very little on the "how"
@@ -58,17 +64,23 @@
      *  How to interact with them?
         *  For now - CLI
   *  Step-by-step guide
-     *  
+     *  HEAVILY inspired by [this article](https://langchain-ai.github.io/langgraph/agents/agents/)
+     *  INSERT DESCRIPTION OF CODE HERE
 
 *   **Challenges and Lessons Learned:**
-    *   A dedicated section on the challenges you faced throughout the entire process.
-    *   Specific lessons you learned about AI agents, React development, and the writing assistant domain.
-    *   Debugging tips and troubleshooting techniques.
+    * INSERT MORE CHALLENGES HERE
+    * A note on working with Cursor
+      * Leveraged cursor to build application
+      * Was fun, but came with unexpected issues regarding generating complex, un-flexible solutions that were hard to amend
+      * [In pragmatic engineer](https://newsletter.pragmaticengineer.com/p/cursor-makes-developers-less-effective), can see that cursor can actually lower productivity when not well trained on its usage
+      * Keep your eyes out for a longer article on this subject
 
-*   **Future Directions:**
-    *   Your plans for the future of the writing assistant. What features do you want to add?
-    *   Areas for improvement and optimization.
-    *   How you plan to address the challenges you identified.
+*   **In future iterations:**
+    *   In-memory storage to amend behaviour over time
+        *   Integrate versionning to showcase edits over time, and re-ingest as context to learn my style
+    *   Fine-tune research performance
+    *   Integrate in UI to avoid usage of IDE
+    *   Better reference management
 
 
 
@@ -76,11 +88,7 @@
     *   Recap of the key steps
     *   Potential future directions and improvements
 
-* **A note on working with Cursor**
-  * Leveraged cursor to build application
-  * Was fun, but came with unexpected issues regarding generating complex, un-flexible solutions that were hard to amend
-  * [In pragmatic engineer](https://newsletter.pragmaticengineer.com/p/cursor-makes-developers-less-effective), can see that cursor can actually lower productivity when not well trained on its usage
-  * Keep your eyes out for a longer article on this subject
+
 
 
 * **References**
