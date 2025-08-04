@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 
 from langchain_core.tools import tool
+
 from langchain_community.agent_toolkits import FileManagementToolkit
 
 # Setup module logger
@@ -27,9 +28,3 @@ def get_file_management_tools():
     
     logger.info(f"Loaded {len(file_toolkit)} file management tools")
     return file_toolkit
-
-
-@tool
-def check_weather(location: str) -> str:
-    '''Return the weather forecast for the specified location.'''
-    return f"It's always sunny in {location}"
