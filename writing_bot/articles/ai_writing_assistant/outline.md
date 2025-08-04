@@ -1,19 +1,20 @@
 # Outline: React AI Agent
 
 -------- FOR AI AGENT AS CONTEXT -----------------
-- Article written for developpers to get a better understanding of react agents
+- Article written for developers to get a better understanding of react agents
 - Want to showcase simplicity of creating your own personal, USEFUL agent
 - Was an opportunity for me to learn about the technology
 --------------------------------------------------
 
 *   **Introduction**
-    *   AI is the name on the town right now
-    *   Lots of talk about the "what", but very little on the "how"
-    *   Recently trying to up my article writing game - what better way than to do a tutorial on writing an AI writing assistant?
-    *   In this article
-        *   AI agent in a nutshell
-        *   React AI agent specifically
-        *   Libraries, Frameworks & Tools (Langchain, LangGraph & LangSmith)
+    *   Relate AI to the Rubik's Cube: Many people are interested in it, but few can solve it.
+    *   Personal Motivation: As a consultant, I need to explore uncharted territory + improve my article writing speed.
+    *   Article-Writing-Seption: (Consider image)
+    *   Problem statement: How can I over-engineer a simple process to attempt and make it more efficient? (with self-deprecation)
+    *   In this article, we will explore:
+        *   AI agents in a nutshell: What they are & what distinguishes different techniques.
+        *   Creating the agent: A deep dive into the step-by-step process of building your own React AI agent for article writing.
+        *   Challenges, Lessons Learned & Future Iterations: Practical insights and debugging tips gained throughout the development process.
 
 *   **Understanding AI Agents**
     *   AI Agent -> Insert definition
@@ -29,8 +30,7 @@
             *   Input/Query: The agent receives an initial query or task.
             *   Planning (Reasoning): The agent analyzes the query and formulates a plan to achieve the desired outcome. This involves reasoning about the available tools and knowledge.
             *   Action: Based on the plan, the agent selects and executes an action. This might involve using a tool, querying an external API, or interacting with the environment.
-            *   Observation: The agent observes the result of the action. This could be the output of a tool, the response from an API, or a change in the environment.
-            *   Reflection: The agent reflects on the observation and updates its plan based on the new information. This step helps the agent adapt to unexpected results or refine its strategy.
+            *   Observation: The agent observes the result of the action and updates its plan based on the new information. This step helps the agent adapt to unexpected results or refine its strategy.
             *   Repeat: The agent repeats the planning, action, observation, and reflection steps until the task is completed or a satisfactory solution is found.
     *   Chain-of-Thought (CoT) Prompting
         *   Explanation of Chain-of-Thought prompting and its benefits
@@ -65,10 +65,11 @@
         *  For now - CLI
   *  Step-by-step guide
      *  HEAVILY inspired by [this article](https://langchain-ai.github.io/langgraph/agents/agents/)
-     *  (See REACT_AGENT_GUIDE.md)
+     *  INSERT DESCRIPTION OF CODE HERE
 
 *   **Challenges and Lessons Learned:**
-    * INSERT MORE CHALLENGES HERE
+    * Performance issues
+      * Sometimes lose information - tool will ignore a request for no reason. Must re-prompt.
     * A note on working with Cursor
       * Leveraged cursor to build application
       * Was fun, but came with unexpected issues regarding generating complex, un-flexible solutions that were hard to amend
@@ -82,17 +83,12 @@
     *   Integrate in UI to avoid usage of IDE
     *   Better reference management
 
-
-
 *   **Conclusion**
     *   Recap of the key steps
     *   Potential future directions and improvements
 
-
-
-
-* **References**
-  *   ReAct: Synergizing Reasoning and Acting in Language Models
+*   **References**
+    *   ReAct: Synergizing Reasoning and Acting in Language Models
         *   Summary:
             *   The ReAct paper introduces a novel approach to language modeling that combines reasoning and acting. It proposes that language models can be more effective in complex tasks if they can not only generate text but also interact with an environment (e.g., a knowledge base or a search engine) to gather information and refine their reasoning process. The core idea is to interleave reasoning steps (thoughts) with actions that allow the model to gather more information, enabling it to handle tasks requiring more than just memorized knowledge.
         *   Key Contributions:
@@ -101,11 +97,11 @@
             *   Enhanced Interpretability: By explicitly modeling the reasoning process, ReAct agents provide more interpretable and transparent decision-making compared to black-box language models.
             *   Addressing Hallucination: The ability to gather information from external sources helps ReAct agents mitigate the problem of hallucination (generating false or misleading information), which is a common issue in large language models.
         *   Link: https://arxiv.org/abs/2210.03629
-  *   Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
+    *   Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
         *   Wei et al. 2022
-  *  https://www.ibm.com/think/topics/chain-of-thoughts
+    *   https://www.ibm.com/think/topics/chain-of-thoughts
         *   Summary: This article covers the fundamentals of chain of thought prompting with IBM Granite 3.3 Instruct models, highlighting how it encourages step-by-step reasoning to solve complex tasks.
-  *  https://www.ibm.com/think/topics/react-agent#1287801558
+    *   https://www.ibm.com/think/topics/react-agent#1287801558
         *   Summary: This resource discusses ReAct agents, which improvise and act fast, figuring things out in real time.
-  *  https://spr.com/comparing-react-and-rewoo-two-frameworks-for-building-ai-agents-in-generative-ai/
+    *   https://spr.com/comparing-react-and-rewoo-two-frameworks-for-building-ai-agents-in-generative-ai/
         *   Summary: This blog post compares ReAct (Reasoning and Action) and ReWOO (Reasoning Without Observations) as two popular frameworks for building AI agents in generative AI.
