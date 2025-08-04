@@ -104,5 +104,8 @@
   *   Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
         *   Wei et al. 2022
   *  https://www.ibm.com/think/topics/chain-of-thoughts
+        *   Summary: This article covers the fundamentals of chain of thought prompting with IBM Granite 3.3 Instruct models, highlighting how it encourages step-by-step reasoning to solve complex tasks.
   *  https://www.ibm.com/think/topics/react-agent#1287801558
+        *   Summary: This resource discusses ReAct agents, which improvise and act fast, figuring things out in real time.
   *  https://spr.com/comparing-react-and-rewoo-two-frameworks-for-building-ai-agents-in-generative-ai/
+        *   Summary: This blog post compares ReAct (Reasoning and Action) and ReWOO (Reasoning Without Observations) as two popular frameworks for building AI agents in generative AI.
