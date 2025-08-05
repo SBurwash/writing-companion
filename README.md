@@ -1,91 +1,144 @@
-# Article Writing CLI
+# Writing Bot - AI-Powered Article Assistant
 
-A CLI tool to help you write articles in Cursor by leveraging Gemini CLI for content generation, editing, and research. The tool works with outlines and provides automatic versioning through git.
+An intelligent writing assistant that helps you create, develop, and refine articles using AI. Built with LangGraph and Google's Gemini, this tool provides a conversational interface for writing with real-time research capabilities and file management.
 
-## Features
+## 🚀 Features
 
-- **Outline-based workflow**: Start with an outline, get AI feedback
-- **Gemini integration**: Leverage Google's Gemini for content review and suggestions
-- **Git versioning**: Automatic tracking of all changes
-- **Project management**: Easy project initialization and management
-- **Free-form review**: Natural language requests for feedback
+### **AI Writing Assistant**
+- **Conversational Interface**: Natural language interaction for writing tasks
+- **Real-time Research**: Internet search capabilities for facts, statistics, and current events
+- **Smart File Management**: Direct reading and writing of outline.md and article.md files
+- **Contextual Understanding**: Reads your current content to provide relevant suggestions
 
-## Quick Start
+### **Project Structure**
+Each article project follows a clean structure:
+```
+articles/
+└── my-article/
+    ├── outline.md     # Bullet-point outline
+    ├── article.md     # Full article content
+    └── references/    # Research materials (optional)
+```
 
-1. Install dependencies:
+### **Writing Capabilities**
+- **Outline Development**: Create and refine bullet-point outlines
+- **Article Writing**: Transform outlines into full articles
+- **Content Evaluation**: Review and suggest improvements
+- **Research Integration**: Fact-check and find supporting data
+
+## 🛠️ Installation
+
+1. **Install dependencies**:
    ```bash
    poetry install
    ```
 
-2. Set up Gemini CLI:
+2. **Set up API key**:
    ```bash
-   # Set your Google AI API key
-   export GOOGLE_API_KEY="your-api-key-here"
+   export GOOGLE_API_KEY="your-google-api-key-here"
    ```
 
-3. Initialize a new article project:
+3. **Run the assistant**:
    ```bash
-   poetry run python cli.py init my-article
+   poetry run python cli.py
    ```
 
-4. Set your current project (optional):
-   ```bash
-   export PROJECT_NAME="my-article"
-   ```
+## 📝 Usage
 
-5. Start working with AI assistance:
-   ```bash
-   # Quick review
-   poetry run python cli.py review "please review my outline and suggest improvements"
-   
-   # Conversational session
-   poetry run python cli.py chat
-   
-   # Check status and commit
-   poetry run python cli.py status
-   poetry run python cli.py commit "Updated outline based on feedback"
-   ```
+### **Starting a Writing Session**
+```bash
+poetry run python cli.py
+```
 
-## Commands
+The assistant will greet you and ask what you'd like to work on. You can:
 
-- `init <project_name>` - Initialize new article project
-- `list` - List all available projects
-- `status [project_name]` - Show project status and git history
-- `commit <message> [project_name]` - Commit changes with custom message
-- `review <request> [--project project_name]` - Review project with free-form requests
-- `chat [project_name]` - Start conversational session with AI assistant
+### **File Operations**
+- **Read current content**: "Show me my current outline"
+- **Update files**: "Update my outline with these new sections"
+- **Append content**: "Add a conclusion section to my article"
+- **Insert at specific lines**: "Insert this paragraph at line 10"
 
-## Environment Variables
+### **Research & Writing**
+- **Real-time research**: "Research the latest data governance trends"
+- **Fact-checking**: "Verify these statistics about AI adoption"
+- **Content expansion**: "Expand section 3 with more details"
+- **Outline improvement**: "Suggest improvements for my outline structure"
 
-- `GOOGLE_API_KEY` - Your Google AI API key (required for review functionality)
-- `PROJECT_NAME` - Default project name (optional, allows omitting project parameter)
-
-## Examples
+### **Examples**
 
 ```bash
-# Create a new project
-poetry run python cli.py init my-blog-post
+# Start the assistant
+poetry run python cli.py
 
-# Set as default project
-export PROJECT_NAME="my-blog-post"
+# In the conversation, you can say:
+"Help me create an outline for an article about data governance"
+"Research the latest statistics on AI adoption in healthcare"
+"Review my current outline and suggest improvements"
+"Expand the introduction section with more background"
+"Add a section about best practices to my outline"
+"Fact-check the statistics in my article"
+```
 
-# Review your outline
-poetry run python cli.py review "review my outline structure"
+## 🎯 Core Capabilities
 
-# Check project status
-poetry run python cli.py status
+### **1. Outline Development**
+- Create hierarchical bullet-point outlines
+- Suggest structural improvements
+- Add missing sections or details
+- Reorganize content flow logically
 
-# Commit changes
-poetry run python cli.py commit "Updated outline based on feedback"
+### **2. Article Writing**
+- Transform outlines into full articles
+- Expand bullet points into detailed content
+- Maintain consistent tone and style
+- Ensure logical flow and readability
 
-# Review with specific project
-poetry run python cli.py review "give me writing tips" --project my-blog-post
+### **3. Research Integration**
+- Real-time internet search for current information
+- Fact-checking and verification
+- Finding supporting data and examples
+- Researching trending topics
 
-# Start conversational session
-poetry run python cli.py chat
+### **4. File Management**
+- Read and modify outline.md and article.md
+- Append or insert content at specific locations
+- Work within the secure articles directory
+- Automatic backup creation before modifications
 
-# In the chat session, you can:
-# - Ask for research: "research data governance trends"
-# - Get feedback: "review my outline structure"
-# - Request suggestions: "suggest improvements for my introduction"
-``` 
+## 🔧 Technical Details
+
+### **Dependencies**
+- **LangGraph**: Conversational workflow management
+- **Google Gemini**: AI content generation and analysis
+- **DuckDuckGo**: Real-time internet research
+- **File Management**: Secure file operations within articles directory
+
+### **Security**
+- All file operations restricted to `writing_bot/articles/` directory
+- Automatic backup creation before file modifications
+- Safe file reading and writing with proper error handling
+
+### **Architecture**
+- **Conversational Interface**: Natural language interaction
+- **Tool Integration**: File management and research tools
+- **Context Awareness**: Reads current project state
+- **Real-time Capabilities**: Live research and fact-checking
+
+## 📚 Writing Guidelines
+
+The assistant follows these principles:
+- **Outlines**: Clear, hierarchical bullet points
+- **Articles**: Well-structured with proper headings
+- **Tone**: Professional and engaging
+- **Format**: Proper markdown formatting
+- **Flow**: Logical progression and clarity
+
+## 🎉 Getting Started
+
+1. **Install and configure** the tool with your API key
+2. **Start a session** with `poetry run python cli.py`
+3. **Tell the assistant** what you want to work on
+4. **Use natural language** to request help with writing tasks
+5. **Let the AI** handle research, suggestions, and file management
+
+The assistant is designed to be your collaborative writing partner, helping you create high-quality articles with real-time research and intelligent suggestions! 
