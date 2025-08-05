@@ -4,10 +4,9 @@ from io import BytesIO
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.prebuilt import create_react_agent
-from langchain_community.tools import DuckDuckGoSearchRun
 from PIL import Image
 
-from .tools import get_file_management_tools
+from .tools import get_file_management_tools, get_search_tools
 # Setup module logger
 logger = logging.getLogger(__name__)
 
@@ -82,7 +81,8 @@ def print_stream(stream):
 def run_workflow():
     logger.info("Initializing workflow")
     file_toolkit = get_file_management_tools()
-    tools = [DuckDuckGoSearchRun(), *file_toolkit]
+    search_toolkit = get_search_tools()
+    tools = [*search_toolkit, *file_toolkit]
     logger.info(f"Initialized model and loaded {len(tools)} tools")
 
     model = ChatGoogleGenerativeAI(model="gemini-2.0-flash")

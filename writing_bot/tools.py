@@ -7,6 +7,7 @@ from pathlib import Path
 from langchain_core.tools import tool
 
 from langchain_community.agent_toolkits import FileManagementToolkit
+from langchain_community.tools import DuckDuckGoSearchRun
 
 # Setup module logger
 logger = logging.getLogger(__name__)
@@ -28,3 +29,6 @@ def get_file_management_tools():
     
     logger.info(f"Loaded {len(file_toolkit)} file management tools")
     return file_toolkit
+
+def get_search_tools():
+    return [DuckDuckGoSearchRun()]
