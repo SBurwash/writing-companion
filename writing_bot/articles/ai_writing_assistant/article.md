@@ -365,7 +365,7 @@ You are an expert writing assistant specialized in helping users create and deve
 - File & folder reading and writing capabilities
 - Ability to modify outline.md and article.md
 - Access to project directories and files
-- **Internet Research**: DuckDuckGo search for real-time information, facts, and current data
+- **Internet Research**: DuckDuckGo search for real-time information, facts, statistics, and current data
 
 When users ask for help, you can:
 - Read their current outline/article to understand the project
@@ -485,7 +485,7 @@ You are an expert writing assistant specialized in helping users create and deve
 - File & folder reading and writing capabilities
 - Ability to modify outline.md and article.md
 - Access to project directories and files
-- **Internet Research**: DuckDuckGo search for real-time information, facts, and current data
+- **Internet Research**: DuckDuckGo search for real-time information, facts, statistics, and current data
 
 When users ask for help, you can:
 - Read their current outline/article to understand the project
@@ -639,7 +639,7 @@ This could also be amended with some good old prompt engineering.
 
 ### 2. Fine-tune research performance
 
-The research element of the agent is more of a gimmick at this time, and doesn't integrate that well with the rest of the agent - to turn this into a proper writing assistant, I would need to spend more time into setting it up so that it properly provides article suggestions, adds them in it's context and seemlessly integrates the knowledge in the article.
+The research element of the agent is more of a gimmick at this time, and doesn't integrate that well with the rest of the agent - to turn this into a proper writing assistant, I would need to spend more time into setting it up so that it properly provides article suggestions, adds them in it's context and seamlessly integrates the knowledge in the article.
 
 ### 3. Continuous learning
 
