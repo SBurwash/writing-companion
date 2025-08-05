@@ -7,7 +7,7 @@ Somehow, I feel the same way about this latest AI wave - everyone's talking abou
 Thing is, though - my job as a consultant sort of dictates that I need to know things others haven't looked into yet. If you want to give advice, before sharing, you have to have something to give.
 Additionally, I've been trying to increase the speed at which I write articles, so why not kill 2 birds with one stone, and write an article on the agent I created to help me in writing it?
 
--- **INSERT IMAGE OF ARTICLE-WRITING-SEPTION** --
+![alt text](a28ygk.jpg)
 
 In this article, I tackle an age-old developer's quandary - how can I over-engineer a simple process to attempt and make it more efficient? 
 
@@ -19,7 +19,7 @@ With that in mind, in this guide, we will explore:
 
 ## AI Agents - What are they
 
--- **INSERT DRAWING OF SECRET AGENT** --
+![alt text](<Screenshot 2025-08-05 at 9.57.49 AM.png>)
 
 Before you discuss any subject with another, you need to make sure that you're both speaking the same language. 
 
@@ -41,7 +41,7 @@ In a more modern example, with an LLM, we can program a series of actions to be 
 
 To resolve this, [an article was written in 2023](https://arxiv.org/pdf/2210.03629) which discusses chain-of-thought processing, where an LLM breaks down a complex prompt into a series of steps, and then at each step, evaluates what would be the best action to take given it's available tooling before evaluating the output and subsequently chooses the next action to perform.
 
--- **INSERT IMAGE OF REACT AGENT** --
+![alt text](<Screenshot 2025-08-05 at 10.05.02 AM.png>)
 
 This imitates more "human-like" reasoning using chain-of-thought (CoI), which follows the same pattern of action-evaluation. For example:
 - You're hungry. You want to make yourself dinner.
@@ -420,7 +420,7 @@ def run_workflow():
             break
         logger.info(f"Received user input: {user_input[:200]}...")
         inputs = {"messages": [("user", user_input)]}
-        print_stream(graph.stream(inputs, config, stream_mode="values"))
+        print_stream(inputs, config, stream_mode="values"))
 ```
 
 #### 4. Running the tool
@@ -649,5 +649,6 @@ The idea in this case would be to store my responses to prompts inside a graph d
 
 ## Conclusion
 
-In this guide, we've walked through the process of building a React AI agent for article writing. By leveraging tools like LangChain and LangGraph, you can create intelligent agents that streamline your workflow and enhance your productivity.
+As we've explored in this guide, building a React AI agent for article writing presents an intriguing approach to streamlining content creation. Perhaps, much like the initial allure of the Rubik's Cube, the complexities of AI agents can seem daunting at first glance. However, by leveraging tools like LangChain and LangGraph, we can begin to solve the puzzle of efficient content generation.
 
+The true value lies in applying this knowledge to your own workflows. I encourage you to experiment with the code, adapt the agent to your specific needs, and explore the potential of AI-powered assistance. While challenges are inevitable, the rewards – increased efficiency, a more streamlined writing process, and a deeper understanding of AI – are well worth the effort. So, take the concepts discussed here, build your own agent, and contribute to the evolving landscape of AI-assisted writing.
