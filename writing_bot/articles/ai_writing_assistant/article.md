@@ -593,46 +593,61 @@ When I'm done, I can simply run the `exit` command to quit.
 
 ## Challenges and Lessons Learned
 
+Building this bot was an interesting challenge. Before finding the handy-dandy `create_react_agent` function, I had to navigate to a fair few documents, videos & blog articles to make heads or tails of what an agent was and how I could build one.
 
+I learnt a few things from the experience, mainly:
+
+### 1. It's a big new world, and it's only getting bigger
+
+There is a LOT of documentation out there, and not a lot of clarity on the solutions. If you want to build a production-ready tool, you're going to have to do a bit of digging and put in some elbow grease to get results.
+
+### 2. Performance & consistency are challenging
+
+Even at this scale, I can see that the agent is stalling, sometimes ignoring a command or quitting out entirely. It's easy to build a conversational AI that will do __something__, but from there to making it a true game changer would take a LOT of work.
+
+I would also say that getting consistent results is incredibly difficult, compared to a Python program, where I can run a debugger at any time, working with LLMs is much more "black-box", where you need to tweak prompts and hope without being able to properly correlate cause and effect at times.
+
+### 3. It's easy to get somewhere, and it's only going to get easier
+
+Even though it took me a while to find the right libraries, if I had to do it again, I could probably pump out a relevant agent in **an hour or two**. Hyper-specific agents are going to become increasingly mainstream as people integrate them into their daily lives. 
 
 ### A note on working with Cursor
 
-Leveraged cursor to build application
+This project was a perfect opportunity for me to try [Cursor](https://cursor.com/agents) for the first time.
 
-Was fun, but came with unexpected issues regarding generating complex, un-flexible solutions that were hard to amend
+The tool is great fun, and the fact that it's a fork of VSCode makes it very easy to start working with it. HOWEVER, I found that I very much agree with the [pragmatic engineer's assessment of the tool](https://newsletter.pragmaticengineer.com/p/cursor-makes-developers-less-effective). 
 
-[In pragmatic engineer](https://newsletter.pragmaticengineer.com/p/cursor-makes-developers-less-effective), can see that cursor can actually lower productivity when not well trained on its usage
+Like anything else, it is a tool that one needs to learn. It has its strengths and limitations, and you need to learn both to be able to use it effectively.
 
-Keep your eyes out for a longer article on this subject
+For example, Cursor is great at creating a first POC from a prompt, but then will make it difficult to make incremental edits. It also has a tendency to make convoluted and long-winded code if not given proper guidelines.
+
+Additionally, Cursor lowers the barrier to entry to using new technologies (like LangChain for me), which is great but can also be a double-edged sword. It can be easy to go down a rabbit hole of features without really understanding what the IDE is spitting out, and then need to read through all of the code at once when a bug occurs.
+
+Cursor is no replacement for good fundamentals - rather, it's a great aid for those who train with it and know how to use it. 
 
 ## In future iterations:
 
-*   In-memory storage to amend behaviour over time
-    *   Integrate versionning to showcase edits over time, and re-ingest as context to learn my style
-*   Fine-tune research performance
-*   Integrate in UI to avoid usage of IDE
-*   Better reference management
+So the million dollar question - __will I be using this bot to write my future articles?__ 
+
+The answer is - I don't know. As it stands, it's...good, but not great. I do have a few ideas of how I could make it excellent, though.
+
+### 1. Implement a stronger memory system 
+
+One of these issues is that I have to recreate the context whenever I kill the program. Creating a chat-based memory system in a postgres db would go a long way in terms of putting down and picking back up a project where I left off.
+
+This could also be amended with some good old prompt engineering.
+
+### 2. Fine-tune research performance
+
+The research element of the agent is more of a gimmick at this time, and doesn't integrate that well with the rest of the agent - to turn this into a proper writing assistant, I would need to spend more time into setting it up so that it properly provides article suggestions, adds them in it's context and seemlessly integrates the knowledge in the article.
+
+### 3. Continuous learning
+
+One of the issues with this tool is that I had to **verbalize** my writing process. But my goal in the future would be that instead, an agent could **learn how I operate**, and propose suggestions of how I could do better.
+
+The idea in this case would be to store my responses to prompts inside a graph database, and use that as training material to fine-tune the agent to tailor it to my needs.
 
 ## Conclusion
 
 In this guide, we've walked through the process of building a React AI agent for article writing. By leveraging tools like LangChain and LangGraph, you can create intelligent agents that streamline your workflow and enhance your productivity.
 
-## References
-
-*   ReAct: Synergizing Reasoning and Acting in Language Models
-    *   Summary:
-        *   The ReAct paper introduces a novel approach to language modeling that combines reasoning and acting. It proposes that language models can be more effective in complex tasks if they can not only generate text but also interact with an environment (e.g., a knowledge base or a search engine) to gather information and refine their reasoning process. The core idea is to interleave reasoning steps (thoughts) with actions that allow the model to gather more information, enabling it to handle tasks requiring more than just memorized knowledge.
-    *   Key Contributions:
-        *   The ReAct Framework: The paper presents a framework for training language models to perform reasoning and acting in a synergistic manner.
-        *   Improved Performance on Complex Tasks: The paper demonstrates that ReAct agents outperform traditional language models on a range of tasks, including question answering, fact verification, and commonsense reasoning.
-        *   Enhanced Interpretability: By explicitly modeling the reasoning process, ReAct agents provide more interpretable and transparent decision-making compared to black-box language models.
-        *   Addressing Hallucination: The ability to gather information from external sources helps ReAct agents mitigate the problem of hallucination (generating false or misleading information), which is a common issue in large language models.
-    *   Link: https://arxiv.org/abs/2210.03629
-*   Chain-of-Thought Prompting Elicits Reasoning in Large Language Models
-    *   Wei et al. 2022
-*   https://www.ibm.com/think/topics/chain-of-thoughts
-    *   Summary: This article covers the fundamentals of chain of thought prompting with IBM Granite 3.3 Instruct models, highlighting how it encourages step-by-step reasoning to solve complex tasks.
-*   https://www.ibm.com/think/topics/react-agent#1287801558
-    *   Summary: This resource discusses ReAct agents, which improvise and act fast, figuring things out in real time.
-*   https://spr.com/comparing-react-and-rewoo-two-frameworks-for-building-ai-agents-in-generative-ai/
-    *   Summary: This blog post compares ReAct (Reasoning and Action) and ReWOO (Reasoning Without Observations) as two popular frameworks for building AI agents in generative AI.
